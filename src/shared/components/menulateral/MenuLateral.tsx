@@ -11,7 +11,6 @@ import {
   useTheme,
 } from "@mui/material";
 import { ReactNode } from "react";
-import { Home, Star } from "@mui/icons-material";
 import { useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 

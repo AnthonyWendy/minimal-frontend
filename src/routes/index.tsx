@@ -1,26 +1,17 @@
 import { Button } from "@mui/material";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDrawerContext } from "../shared/contexts";
-import { useEffect } from "react";
-import { Home, Star } from "@mui/icons-material";
+import { useEffect, useMemo } from "react";
+import { DrawerOptionsList } from "../shared/components/menulateral/DrawerOptionsList";
 
 export const AppRoutes = () => {
     const { toggleDrawerOpen, setDrawerOption } = useDrawerContext();
 
+    const drawerOptionList = useMemo(() => DrawerOptionsList(), []);
+
     useEffect(() => {
-        setDrawerOption([
-            {
-                icon: <Home />,
-                path: "/pagina-inicial",
-                label: "Página inicial",
-            },
-            {
-                icon: <Star />,
-                path: "/cidades",
-                label: "Cidades",
-            },
-        ]);
-    }, [setDrawerOption]); // Adicionado array de dependências.
+        setDrawerOption(drawerOptionList);
+    }, [setDrawerOption, drawerOptionList]);
 
     return (
         <Routes>
@@ -36,7 +27,7 @@ export const AppRoutes = () => {
                     </Button>
                 }
             />
-            <Route path="/cidades" element={<div>Cidades</div>} /> {/* Nova rota */}
+            <Route path="/cidades" element={<div>Cidades</div>} />
             <Route path="*" element={<Navigate to="/pagina-inicial" />} />
         </Routes>
     );

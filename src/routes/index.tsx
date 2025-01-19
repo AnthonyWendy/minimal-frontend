@@ -1,11 +1,11 @@
-import { Button } from "@mui/material";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDrawerContext } from "../shared/contexts";
 import { useEffect, useMemo } from "react";
 import { DrawerOptionsList } from "../shared/components/menulateral/DrawerOptionsList";
+import { Dashboard } from "../pages";
 
 export const AppRoutes = () => {
-    const { toggleDrawerOpen, setDrawerOption } = useDrawerContext();
+    const { setDrawerOption } = useDrawerContext();
 
     const drawerOptionList = useMemo(() => DrawerOptionsList(), []);
 
@@ -15,18 +15,7 @@ export const AppRoutes = () => {
 
     return (
         <Routes>
-            <Route
-                path="/pagina-inicial"
-                element={
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={toggleDrawerOpen}
-                    >
-                        Mudar o contexto
-                    </Button>
-                }
-            />
+            <Route path="/pagina-inicial" element={ <Dashboard /> } />
             <Route path="/cidades" element={<div>Cidades</div>} />
             <Route path="*" element={<Navigate to="/pagina-inicial" />} />
         </Routes>

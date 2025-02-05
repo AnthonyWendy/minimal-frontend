@@ -24,6 +24,8 @@ export const LayoutBaseDePagina: React.FC<ILayoutBaseDePaginaProps> = ({
 
   return (
       <Box height="100%" display="flex" flexDirection="column" gap={1} >
+
+        {/* a configuração adicionado no height serve para verificar o tamanho da tela e caso seja menor do que o especificado, o tamanho da fonte irá diminuir */}
         <Box padding={1} display="flex" alignItems="center" height={theme.spacing(smDown ? 6 : mdDown ? 8 : 12)}>
           {smDown && (
             <IconButton onClick={toggleDrawerOpen}>
